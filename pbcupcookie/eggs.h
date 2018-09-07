@@ -1,0 +1,4 @@
+class Eggs {
+public:
+    Eggs();
+};

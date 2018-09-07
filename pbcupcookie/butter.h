@@ -1,0 +1,5 @@
+class Butter {
+public:
+    Butter();
+};
+

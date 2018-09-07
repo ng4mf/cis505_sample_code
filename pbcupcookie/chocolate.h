@@ -1,0 +1,5 @@
+
+class Chocolate {
+public:
+    Chocolate();
+};
