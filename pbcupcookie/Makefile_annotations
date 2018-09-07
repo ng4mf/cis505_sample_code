@@ -34,7 +34,8 @@ OBJ = $(SRC:.cc=.o)
 # We want smart compilation based on whether something needs to be recompiled or
 # not. Thus, we generate dependency files containing which other files an object file
 # depends on, and using this Make can determine exactly which files need to be 
-# recompiled before the project is relinked.
+# recompiled before the project is relinked. This isn't actually used for this example.
+# See the link at the top for details on how to use this.
 DEP = $(OBJ:.o:.d) 
 
 # peanut_butter_cup_cookie is the TARGET, i.e. the output executable
