@@ -6,7 +6,6 @@ CXX = g++
 
 # We are using the C++ 11 standard, that is Flag 1
 # We want debugging outputs, so Flag #2 is -Wall
-# We want to generate object files (.o files), hence -c
 # We want to have the generated executable be debuggable, hence -g
 # If we want to include another directory, say because our .h files are separated out 
 # 	from our source files (a common project organization technique), we can tell the
