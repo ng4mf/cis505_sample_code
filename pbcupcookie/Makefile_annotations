@@ -55,8 +55,8 @@ peanut_butter_cup_cookie: $(OBJ)
 # 			Line 30. That is, it refers to the dependencies of the rule
 # 	- Though unused, $< is another special variable meaning the FIRST dependency after
 # 			the colon. 
-# 	- Unrelated to make, but something that catches some off guard is the location of 
-# 			$(LDFLAGS). Location matters!
+# 	- Unrelated to make directly, but something that catches some off guard is the location of 
+# 			$(LDFLAGS), i.e. libraries. Location can matter a lot!
 
 # A PHONY rule is not a target to compile, but rather an argument passed to Make
 # that tells it to do specific things. The most common is cleaning the project, which
