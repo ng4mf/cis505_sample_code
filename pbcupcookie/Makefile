@@ -1,72 +1,16 @@
 # The Makefile is based on the explanation of Makefiles that is found here:
 # http://nuclear.mutantstargoat.com/articles/make/
 
-# We are using g++, so we specify the compiler 
 CXX = g++
-
-# We are using the C++ 11 standard, that is Flag 1
-# We want debugging outputs, so Flag #2 is -Wall
-# We want to generate object files (.o files), hence -c
-# We want to have the generated executable be debuggable, hence -g
-# If we want to include another directory, say because our .h files are separated out 
-# 	from our source files (a common project organization technique), we can tell the
-# 	compiler that the files called in the #include statements might also be in the 
-# 	directory specified by -I
-# The name CPPFLAGS is somewhat of a standard, but you can name it whatever
-# 	you want.
-CPPFLAGS = -std=c++11 -Wall -g -I./emptydir
-
-# We don't actually need the pthread shared library to be linked, this is 
-# just as an example of how you could use it
-# As before, LDFLAGS is somewhat of a standard, but you can name it something else
-# 	too.
-# As with the -I flag for CPPFLAGS, libraries can be added via -L, please look it up 
-# 	for more details
+CXXFLAGS = -std=c++11 -Wall -g -I./emptydir
 LDFLAGS = -pthread 
 
-# Collect ALL source files ending in .cc into a single Make variable
 SRC = $(wildcard *.cc)
-
-# We want to create a variable saying that we will generate OBJECT files
-# for all the files contained in the variable called SRC, but converting
-# the file endings from .cc to .o
 OBJ = $(SRC:.cc=.o)
 
-# We want smart compilation based on whether something needs to be recompiled or
-# not. Thus, we generate dependency files containing which other files an object file
-# depends on, and using this Make can determine exactly which files need to be 
-# recompiled before the project is relinked.
-DEP = $(OBJ:.o:.d) 
+cook: $(OBJ) 
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-# peanut_butter_cup_cookie is the TARGET, i.e. the output executable
-# It's dependencies are listed following the colon, note that the variable is 
-# 	specified using an "escape" $ AND parentheses. Without parentheses, Make 
-# 	will only recognize the FIRST LETTER after the $ as the variable name
-peanut_butter_cup_cookie: $(OBJ) 
-	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
-
-# Explanations for Line 30-31:
-#   - There is NO SPACE before the target name on Line 30
-# 	- There is EXACTLY ONE tab character (not 4 or 8 spaces, but 1 tab character)
-# 			on the line following the rule peanut_butter_cup_cookie
-# 	- $@ is a special variable in make that refers to the name of the rule, in this 
-# 			case, $@ = peanut_butter_cup_cookie. You can specify something else if you
-# 			want the generated output file to be named something else
-# 	- $^ is another special variable. It refers to all things after the colon on 
-# 			Line 30. That is, it refers to the dependencies of the rule
-# 	- Though unused, $< is another special variable meaning the FIRST dependency after
-# 			the colon. 
-# 	- Unrelated to make, but something that catches some off guard is the location of 
-# 			$(LDFLAGS). Location matters!
-
-# A PHONY rule is not a target to compile, but rather an argument passed to Make
-# that tells it to do specific things. The most common is cleaning the project, which
-# means removal of all the object files.
 .PHONY: clean
 clean:
-	rm -f $(OBJ) peanut_butter_cup_cookie
-
-# Here's another to remove dependency files
-.PHONY: cleandep
-cleandep:
-	rm -f $(wildcard *.d)
+	rm -f $(OBJ) cook
