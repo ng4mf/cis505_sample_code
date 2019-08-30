@@ -2,8 +2,8 @@
 # http://nuclear.mutantstargoat.com/articles/make/
 
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -g -I./emptydir
-LDFLAGS = -pthread 
+CXXFLAGS = -std=c++11 -Wall -g -I./emptydir -fsanitize=address
+LDFLAGS = -pthread -lasan
 
 SRC = $(wildcard *.cc)
 OBJ = $(SRC:.cc=.o)

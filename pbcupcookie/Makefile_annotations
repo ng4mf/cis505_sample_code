@@ -11,17 +11,21 @@ CXX = g++
 # 	from our source files (a common project organization technique), we can tell the
 # 	compiler that the files called in the #include statements might also be in the 
 # 	directory specified by -I
+# -fsanitize=address is to enable the address sanitizer, which will help you catch 
+#  	memory bugs early, so long as you test your code frequently
 # The name CPPFLAGS is somewhat of a standard, but you can name it whatever
 # 	you want.
-CPPFLAGS = -std=c++11 -Wall -g -I./emptydir
+CPPFLAGS = -std=c++11 -Wall -g -I./emptydir -fsanitize=address
 
 # We don't actually need the pthread shared library to be linked, this is 
 # just as an example of how you could use it
 # As before, LDFLAGS is somewhat of a standard, but you can name it something else
 # 	too.
-# As with the -I flag for CPPFLAGS, libraries can be added via -L, please look it up 
-# 	for more details
-LDFLAGS = -pthread 
+# As with the -I flag for CPPFLAGS, libraries can be added by path via -L, 
+# 	please look it up for more details
+# -pthread: POSIX thread library
+# -lasan: address sanitizer library
+LDFLAGS = -pthread -lasan
 
 # Collect ALL source files ending in .cc into a single Make variable
 SRC = $(wildcard *.cc)
