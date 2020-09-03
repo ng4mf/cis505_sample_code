@@ -1,0 +1,16 @@
+Test 1 bugs:
+- Not enough memory
+- Malloc and no free
+
+
+Test 2 bugs:
+- Resetting memory with no free
+- Accessing after free
+- Bad initialization of memory
+
+
+Valgrind showcase:
+- must use -g when compiling
+- debug using valgrind errors
+- find memory leaks using valgrind leak information
+- find tough to see leaks using -leak-check=full
