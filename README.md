@@ -1,5 +1,6 @@
 # example_cpp_make
-Example OO program with Makefile
 
-Note: The C/C++ code was not written by me, it was written by a previous TA. 
-The Makefile has been rewritten with lots of comments to help you make your own.
+The code in this repository has more contributors than listed, but previous versions were not developed in this git repo.
+
+The Makefile in pbcupcookie has been rewritten with lots of comments to help you make your own.
+
