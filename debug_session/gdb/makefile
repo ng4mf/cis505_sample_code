@@ -2,7 +2,7 @@
 # http://nuclear.mutantstargoat.com/articles/make/
 
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -g -O0
+CXXFLAGS = -std=c++11 -Wall -ggdb3 -O0
 
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
