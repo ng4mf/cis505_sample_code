@@ -23,7 +23,7 @@ This is a short, simple list, though, and is not meant to be exhaustive.
   ```gdb mysort```
   Valgrind will give you a PID to input to gdb, so then inside gdb, type
 
-  ```target remote | vgdb --pid=<valgrind-provided-pid>```
+  ```target remote | vgdb --pid=$valgrind_provided_pid```
 
   Valgrind will trigger SIGTRAP and stop in gdb any time it detects an error. It will print the stack trace of why it is printing the error. You can then explore what might be causing the issue. Note that you cannot use "n" and "s" in this mode, but can use everything else. To move forward you must use "c".
 
@@ -40,5 +40,5 @@ Some useful commands in gdb:
 - step: "s"
 - continue: "c"
 - recompile your program without exiting gdb: "make"
-- run your program: "r <args>"
+- run your program: "r $args"
 - restart your program while already having done at least one run in gdb with last set of args passed in: "r"
