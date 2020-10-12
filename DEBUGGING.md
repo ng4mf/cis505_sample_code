@@ -9,9 +9,10 @@ This is a short, simple list, though, and is not meant to be exhaustive.
 
 - Enable all warnings. Warnings will still allow you to compile, but are good candidates to turn into bugs later. Add ```-Wall -Wextra -Wconversion``` to your Makefile rule.
 
-- If you want to step through code in the debugger exactly line by line, you can disable all optimizations the compiler does by passing in "-O0". This makes things very slow but also follow exactly what is written in the code. By default, the compiler uses "-O2". Remember to disable "-O0" before submitting your assignment.
+- If you want to step through code in the debugger exactly line by line, you can disable all optimizations the compiler does by passing in ```-O0```. This makes things very slow but also follow exactly what is written in the code. By default, the compiler uses ```-O2```.
 
-- The easiest one is address sanitizer so that you test as you go. In you Makefile rule for mysort, pass in "-fsanitize=address" and "-lasan". Remember to disable this if you use valgrind.
+- The easiest one is address sanitizer so that you test as you go. In you Makefile rule for mysort, pass in "-fsanitize=address" and "-lasan". 
+  Remember to disable this if you use valgrind.
 
 - It can be super useful to be able to run gdb and valgrind together:
   In one terminal, run (track-origins adds more detail, but slows things down, remove it if you don't find it useful)
