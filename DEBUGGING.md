@@ -7,7 +7,7 @@ This is a short, simple list, though, and is not meant to be exhaustive.
 
 - Maximize debugging information by passing ```-ggdb3``` in your Makefile
 
-- Enable all warnings. Warnings will still allow you to compile, but are good candidates to turn into bugs later. Add "-Wall -Wextra -Wconversion" to your Makefile rule.
+- Enable all warnings. Warnings will still allow you to compile, but are good candidates to turn into bugs later. Add ```-Wall -Wextra -Wconversion``` to your Makefile rule.
 
 - If you want to step through code in the debugger exactly line by line, you can disable all optimizations the compiler does by passing in "-O0". This makes things very slow but also follow exactly what is written in the code. By default, the compiler uses "-O2". Remember to disable "-O0" before submitting your assignment.
 
