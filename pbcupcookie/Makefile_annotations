@@ -38,9 +38,18 @@ OBJ = $(SRC:.cc=.o)
 # We want smart compilation based on whether something needs to be recompiled or
 # not. Thus, we generate dependency files containing which other files an object file
 # depends on, and using this Make can determine exactly which files need to be 
-# recompiled before the project is relinked. This isn't actually used for this example.
+# recompiled before the project is relinked.
 # See the link at the top for details on how to use this.
 DEP = $(OBJ:.o:.d) 
+
+# includes all of the dependency files when we run "make"
+-include $(DEP)
+
+# rule to generate a dep file by using the C preprocessor
+# (see man cpp for details on the -MM and -MT options)
+%.d: %.cc
+	cpp $(CXXFLAGS) $< -MM -MT $(@:.d=.o) > $@
+
 
 # peanut_butter_cup_cookie is the TARGET, i.e. the output executable
 # It's dependencies are listed following the colon, note that the variable is 

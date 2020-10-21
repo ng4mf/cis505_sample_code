@@ -7,6 +7,14 @@ LDFLAGS = -pthread -lasan
 
 SRC = $(wildcard *.cc)
 OBJ = $(SRC:.cc=.o)
+DEP = $(OBJ:.o=.d)
+
+-include $(DEP)
+
+# rule to generate a dep file by using the C preprocessor
+# (see man cpp for details on the -MM and -MT options)
+%.d: %.cc
+	cpp $(CXXFLAGS) $< -MM -MT $(@:.d=.o) > $@
 
 cook: $(OBJ) 
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
