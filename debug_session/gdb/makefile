@@ -1,15 +1,7 @@
-# The Makefile is based on the explanation of Makefiles that is found here:
-# http://nuclear.mutantstargoat.com/articles/make/
+all: example1.cc example2.cc
+	g++ example1.cc -o app1 -g 
+	g++ example2.cc -o app2 -g 
+	g++ example3.cc -o app3 -g 
 
-CXX = g++
-CXXFLAGS = -std=c++11 -Wall -ggdb3 -O0
-
-SRC = $(wildcard *.cpp)
-OBJ = $(SRC:.cpp=.o)
-
-debug: $(OBJ) 
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-.PHONY: clean
 clean:
-	rm -f $(OBJ) debug
+	rm -f app1 app2 app3
